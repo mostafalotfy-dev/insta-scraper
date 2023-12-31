@@ -1,27 +1,44 @@
-from random import random
+from urllib.parse import urlparse
+
+from requests import Response
+from urllib3.util import Url
+
+from Contracts.Model import Model
+from Utils.JsonReader import read_json
 
 
 class Request:
-    res: dict | str
+    response: {} = {}
     host_name: str
     cookies: str
     headers: dict
     body: str | dict
 
     def __init__(self):
-        csrftoken= random()
-        self.host_name = "https://www.instagram.com/"
-        self.cookies = ""
-        self.headers = {"User-Agent": f'{random()}',
-                        "X-Csrftoken": f"{csrftoken}",
-                        "X-Ig-App-Id": "936619743392459",
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        "Sec-Fetch-Site": "same-origin",
-                        "Host": self.host_name.replace("https://", "").replace(".com/", ".com"),
-                        "Cookie": self.cookies,
-                        }
-        self.body = ""
-        self.res = dict()
+        self.response = {}
 
-    def json(self) -> dict:
-        return self.res
+    def json(self) -> []:
+        return self.response
+
+    def collect_headers(self, headers: dict):
+        new_headers: dict = dict()
+        cookies = read_json("instagram.json")
+
+        for header in headers:
+            if header["key"] == "cookie":
+                new_headers["Cookie"] = cookies["variable"][0]["value"]
+            else:
+                new_headers[header["key"].title()] = header["value"]
+
+        return new_headers
+
+    def is_json(self, response: Response):
+        try:
+            response.json()
+            return True
+        except:
+            return False
+
+    def parse_url(self, url: str):
+        url = urlparse(url)
+        return url

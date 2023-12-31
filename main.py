@@ -1,17 +1,19 @@
-import pandas as pd
+import pandas
+from dotenv import load_dotenv
+from Batch import Batch
+from argparse import ArgumentParser
+from Info import Info
+from Utils.JsonReader import filter_by_name
 
-from Clips import Clips
+parser: ArgumentParser = ArgumentParser("insta_scraper")
+parser.add_argument("name", help="type name to search Profile")
+args = parser.parse_args()
+load_dotenv()  # take environment variables from .env.
+data = Batch(args.name).api()
 
-from Like import Like
-from Profile import Profile
+for user in filter_by_name(data, "clips").get()["items"]:
+    data = Info(user["pk"]).get()
 
-ids: [int] = []
-usernames: [str] = []
-for profile in Profile(name="ahmed").get():
-    print(profile.data.user.id)
-    for clip in Clips().get(profile.data.user.id):
-        print(clip["media"]["pk"])
-        for like in Like(clip["media"]["pk"]).get():
-            usernames.append(like["username"])
-df = pd.DataFrame(usernames)
-df.to_csv("users.csv", mode="a+", index=False)
+    pandas.DataFrame(data["comments"]).to_csv(open("users.csv", "a+", encoding="utf-8"),index=False)
+
+
