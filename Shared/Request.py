@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import requests
 from requests import Response
 
-from Utils.JsonReader import read_json, get_by_name
+from instagram.Utils.JsonReader import read_json, get_by_name
 
 
 class Request:
@@ -14,19 +14,21 @@ class Request:
     cookies: str
     headers: dict
     body: str | dict
+    directory: str = "instagram"
 
     def __init__(self):
-        opening = open(os.getcwd() + "/Requests/instagram.json", "r", encoding="utf-8")
+
+        opening = open(os.getcwd() + f"/{self.directory}/Requests/instagram.json", "r", encoding="utf-8")
         self.loaded_json = json.load(opening)
-        sso = get_by_name(data=self.loaded_json["item"],name="ig_sso")
-        requests.post(sso["url"]["raw"],headers=self.collect_headers(sso["header"]))
+        sso = get_by_name(data=self.loaded_json["item"], name="ig_sso")
+        requests.post(sso["url"]["raw"], headers=self.collect_headers(sso["header"]))
 
     def json(self) -> []:
         return self.response
 
     def collect_headers(self, headers: dict):
         new_headers: dict = dict()
-        cookies = read_json("Requests/instagram.json")
+        cookies = read_json(f"{self.directory}/Requests/instagram.json")
 
         for header in headers:
             if header["key"] == "cookie":
