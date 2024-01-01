@@ -20,8 +20,7 @@ class Request:
 
         opening = open(os.getcwd() + f"/{self.directory}/Requests/instagram.json", "r", encoding="utf-8")
         self.loaded_json = json.load(opening)
-        sso = get_by_name(data=self.loaded_json["item"], name="ig_sso")
-        requests.post(sso["url"]["raw"], headers=self.collect_headers(sso["header"]))
+
 
     def json(self) -> []:
         return self.response.json()

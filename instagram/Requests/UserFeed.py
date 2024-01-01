@@ -13,10 +13,11 @@ class UserFeed(Request):
     def __init__(self, name: str):
         super().__init__()
 
-        record = self.get_record("clips")
+        record = self.get_record("user_feed_by_name")
 
         self.response = requests.get(record["url"]["raw"].format(name),
                                      headers=self.collect_headers(record["header"]))
+        print(self.response.text)
 
     def get(self) -> dict:
         return self.response.json()
