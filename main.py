@@ -1,19 +1,26 @@
-import pandas
+import csv
+
+import time
+
 from dotenv import load_dotenv
-from Batch import Batch
+
+from Requests.Search import Search
+
 from argparse import ArgumentParser
-from Info import Info
-from Utils.JsonReader import filter_by_name
+from Requests.Like import Like
 
 parser: ArgumentParser = ArgumentParser("insta_scraper")
 parser.add_argument("name", help="type name to search Profile")
+
 args = parser.parse_args()
 load_dotenv()  # take environment variables from .env.
-data = Batch(args.name).api()
+start = time.time()
+search_results = Search(args.name).api()
+csv_writer = csv.writer(open("users.csv", "w+", encoding="utf-8"))
+csv_writer.writerow(["username", "link"])
+for search_result in search_results:
 
-for user in filter_by_name(data, "clips").get()["items"]:
-    data = Info(user["pk"]).get()
+    for user in search_results["users"]:
+        csv_writer.writerow([user["user"]["username"], f"https://www.instagram.com/{user['user']['username']}"])
 
-    pandas.DataFrame(data["comments"]).to_csv(open("users.csv", "a+", encoding="utf-8"),index=False)
-
-
+print(time.time() - start)

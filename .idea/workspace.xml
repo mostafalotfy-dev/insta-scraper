@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa6e7500-5fb6-463e-b1d3-2681945a9829" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Clips.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Excel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Follower.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Like.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Media.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="aa6e7500-5fb6-463e-b1d3-2681945a9829" name="Changes" comment="bypass rate limit">
+      <change afterPath="$PROJECT_DIR$/Requests/Search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Requests/UserFeed.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Batch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Follower.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Info.py" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/Like.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Request.py" beforeDir="false" afterPath="$PROJECT_DIR$/Request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/JsonReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/JsonReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/instagram.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +32,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2a7BHHsHicXwbawY6RIzlH9BvCM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,15 +43,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/instascrap/pythonProject/Requests&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\instascrap\pythonProject\Requests" />
+      <recent name="D:\instascrap\pythonProject" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\instascrap\pythonProject\Requests" />
+      <recent name="D:\instascrap\pythonProject\Models" />
+      <recent name="D:\instascrap\pythonProject\Utils" />
+      <recent name="D:\instascrap\pythonProject" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pythonProject" />
@@ -99,9 +105,32 @@
       <option name="presentableId" value="Default" />
       <updated>1703659648144</updated>
     </task>
+    <task id="LOCAL؜-٠٠٠٠١" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1703703174302</created>
+      <option name="number" value="٠٠٠٠١" />
+      <option name="presentableId" value="LOCAL؜-٠٠٠٠١" />
+      <option name="project" value="LOCAL؜" />
+      <updated>1703703174302</updated>
+    </task>
+    <task id="LOCAL؜-٠٠٠٠٢" summary="bypass rate limit">
+      <option name="closed" value="true" />
+      <created>1704015982849</created>
+      <option name="number" value="٠٠٠٠٢" />
+      <option name="presentableId" value="LOCAL؜-٠٠٠٠٢" />
+      <option name="project" value="LOCAL؜" />
+      <updated>1704015982849</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="bypass rate limit" />
+    <option name="LAST_COMMIT_MESSAGE" value="bypass rate limit" />
   </component>
 </project>
