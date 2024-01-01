@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import requests
 from requests import Response
 
-from instagram.Utils.JsonReader import read_json, get_by_name
+from Shared.Utils.JsonReader import read_json, get_by_name
 
 
 class Request:
@@ -24,7 +24,7 @@ class Request:
         requests.post(sso["url"]["raw"], headers=self.collect_headers(sso["header"]))
 
     def json(self) -> []:
-        return self.response
+        return self.response.json()
 
     def collect_headers(self, headers: dict):
         new_headers: dict = dict()
@@ -55,3 +55,9 @@ class Request:
             post_data[data["key"]] = data['value']
 
         return post_data
+    def get_record(self,name:str):
+        insta = read_json(f"{self.directory}/Requests/instagram.json")["item"]
+
+        for request in insta:
+            if request["name"].find(name) != -1:
+                return request["request"]
