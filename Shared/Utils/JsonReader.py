@@ -19,7 +19,8 @@ def filter_by_name(data: [], name: str):
 
 def get_by_name(data, name: str):
     for l in data:
-        if l["name"].find(name) != -1:
+        if l["name"] == name:
+
             return l["request"]
 
 

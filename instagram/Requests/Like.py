@@ -1,4 +1,3 @@
-
 from time import sleep
 
 import requests
@@ -8,22 +7,16 @@ from instagram.Requests.LogInfo import LogInfo
 
 
 class Like(Request):
-    def __init__(self, feeds: []):
+    def __init__(self, user: dict):
         super().__init__()
-        record = self.get_record("likes")
+        record = self.get_record("likers")
         headers = self.collect_headers(record["header"])
-        self.likes = []
 
-        for feed in feeds:
-            response = requests.get(
-                record["url"]["raw"].format(feed["pk"]),
-                headers=headers)
-
-            self.likes.append(response.json())
-            LogInfo()
-            sleep(1)
+        self.response = requests.get(
+            record["url"]["raw"].format(user["pk"]),
+            headers=headers)
 
 
 
     def get(self):
-        return self.likes
+        return self.response.json()

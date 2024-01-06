@@ -17,7 +17,7 @@ class UserFeed(Request):
 
         self.response = requests.get(record["url"]["raw"].format(name),
                                      headers=self.collect_headers(record["header"]))
-        print(self.response.text)
+
 
     def get(self) -> dict:
         return self.response.json()

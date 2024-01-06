@@ -9,7 +9,7 @@ from Shared.Utils.JsonReader import read_json, get_by_name
 
 
 class Request:
-    response: Response
+    response: Response | dict
     host_name: str
     cookies: str
     headers: dict
@@ -20,7 +20,6 @@ class Request:
 
         opening = open(os.getcwd() + f"/{self.directory}/Requests/instagram.json", "r", encoding="utf-8")
         self.loaded_json = json.load(opening)
-
 
     def json(self) -> []:
         return self.response.json()
@@ -48,13 +47,16 @@ class Request:
         url = urlparse(url)
         return url
 
-    def collect_post_data(self, loaded_json) -> {}:
+    def collect_post_data(self, name: str) -> {}:
         post_data = {}
-        for data in loaded_json["urlencoded"]:
-            post_data[data["key"]] = data['value']
+        record = get_by_name(self.loaded_json["item"], name)
+
+        for item in record["body"]["urlencoded"]:
+            post_data[item["key"]] = item['value']
 
         return post_data
-    def get_record(self,name:str):
+
+    def get_record(self, name: str):
         insta = read_json(f"{self.directory}/Requests/instagram.json")["item"]
 
         for request in insta:
